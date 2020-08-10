@@ -1,5 +1,7 @@
-# Generated BentoService bundle - MitoScanner:20200810184951_B797E1
+# BentoML Server for BioDetectron
 
-This is a ML Service bundle created with BentoML, it is not recommended to edit
-code or files contained in this directory. Instead, edit the code that uses BentoML
-to create this bundle, and save a new BentoService bundle.
+Execute main.py and serve Bento server with 
+
+```
+bentoml serve MitoScanner:latest
+```
