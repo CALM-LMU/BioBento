@@ -1,0 +1,62 @@
+version: 0.9.0
+kind: BentoService
+metadata:
+  created_at: 2020-12-14 08:32:20.772027
+  service_name: YeastMate
+  service_version: 20201214093219_9D70A3
+  module_name: main
+  module_file: main.py
+env:
+  pip_packages:
+  - bentoml==0.9.0
+  - imageio==2.6.1
+  - torch==1.4.0
+  conda_env:
+    name: bentoml-default-conda-env
+    channels:
+    - conda-forge
+    - defaults
+    dependencies:
+    - pip
+  python_version: 3.7.6
+  docker_base_image: davidbunk/biodetectron:latest
+apis:
+- name: predict
+  docs: "BentoService inference API 'predict', input: 'ImageInput', output: 'DefaultOutput'"
+  input_type: ImageInput
+  output_type: DefaultOutput
+  mb_max_batch_size: 2000
+  mb_max_latency: 10000
+  batch: false
+  input_config:
+    accept_image_formats:
+    - .webp
+    - .tiff
+    - .png
+    - .jpg
+    - .jpeg
+    - .bmp
+    pilmode: RGB
+  output_config:
+    cors: '*'
+- name: predict_fiji
+  docs: "BentoService inference API 'predict_fiji', input: 'ImageInput', output: 'DefaultOutput'"
+  input_type: ImageInput
+  output_type: DefaultOutput
+  mb_max_batch_size: 2000
+  mb_max_latency: 10000
+  batch: false
+  input_config:
+    accept_image_formats:
+    - .webp
+    - .tiff
+    - .png
+    - .jpg
+    - .jpeg
+    - .bmp
+    pilmode: RGB
+  output_config:
+    cors: '*'
+artifacts:
+- name: model
+  artifact_type: PytorchModelArtifact

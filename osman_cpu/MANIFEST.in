@@ -1,0 +1,2 @@
+include YeastMate/bentoml.yml
+graft YeastMate/artifacts
